@@ -45,7 +45,8 @@ All colors MUST be HSL.
     
     --glow-primary: 0 0 30px hsl(217 91% 50% / 0.25);
     --glow-accent: 0 0 40px hsl(189 94% 43% / 0.2);
-    --shadow-glass: 0 8px 32px 0 hsl(0 0% 0% / 0.1);
+    --shadow-glass: 0 8px 32px 0 hsl(220 20% 80% / 0.3), 0 2px 8px 0 hsl(220 20% 60% / 0.2);
+    --shadow-glass-hover: 0 12px 48px 0 hsl(220 20% 70% / 0.4), 0 4px 16px 0 hsl(220 20% 50% / 0.3);
     
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -80,17 +81,37 @@ All colors MUST be HSL.
 
 @layer utilities {
   .glass {
-    background: hsl(var(--card) / 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid hsl(var(--border));
+    background: linear-gradient(
+      135deg,
+      hsl(0 0% 100% / 0.7) 0%,
+      hsl(0 0% 100% / 0.5) 100%
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid hsl(0 0% 100% / 0.3);
     box-shadow: var(--shadow-glass);
   }
 
   .glass-strong {
-    background: hsl(var(--card) / 0.9);
-    backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--border));
+    background: linear-gradient(
+      135deg,
+      hsl(0 0% 100% / 0.85) 0%,
+      hsl(0 0% 100% / 0.65) 100%
+    );
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    border: 1px solid hsl(0 0% 100% / 0.4);
     box-shadow: var(--shadow-glass);
+  }
+  
+  .glass:hover {
+    border: 1px solid hsl(0 0% 100% / 0.5);
+    box-shadow: var(--shadow-glass-hover);
+  }
+  
+  .glass-strong:hover {
+    border: 1px solid hsl(0 0% 100% / 0.6);
+    box-shadow: var(--shadow-glass-hover);
   }
 
   .gradient-text {
