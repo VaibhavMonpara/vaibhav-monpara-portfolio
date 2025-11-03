@@ -4,32 +4,25 @@ import { Button } from "@/components/ui/button";
 const Projects = () => {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with real-time inventory management, secure payments, and admin dashboard.",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      github: "https://github.com",
-      live: "https://example.com"
+      title: "AI-Powered Recruiting Agent",
+      description: "Developed an AI-driven recruiting tool automating email outreach with responsive UI and scalable backend. Integrated Google Gemini AI for intelligent candidate matching and communication.",
+      tech: ["React", "Flask", "PostgreSQL", "Google Gemini AI"],
+      github: "https://github.com/VaibhavMonpara",
+      live: "https://vaibhavmonpara.netlify.app"
     },
     {
-      title: "Task Management App",
-      description: "Collaborative task management tool with real-time updates, team workspaces, and productivity analytics.",
-      tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
-      github: "https://github.com",
-      live: "https://example.com"
+      title: "Energy Consumption and Sustainability Analytics",
+      description: "Analyzed renewable energy data to forecast usage patterns. Implemented interactive Plotly Dash dashboard for visualizing energy consumption trends and sustainability metrics.",
+      tech: ["Python", "Pandas", "Scikit-learn", "Plotly Dash"],
+      github: "https://github.com/VaibhavMonpara",
+      live: "https://vaibhavmonpara.netlify.app"
     },
     {
-      title: "AI Content Generator",
-      description: "AI-powered content creation platform utilizing GPT models for marketing copy, blogs, and social media posts.",
-      tech: ["React", "Python", "OpenAI API", "FastAPI"],
-      github: "https://github.com",
-      live: "https://example.com"
-    },
-    {
-      title: "Weather Dashboard",
-      description: "Real-time weather tracking application with interactive maps, forecasts, and historical data visualization.",
-      tech: ["Vue.js", "Express", "Chart.js", "Weather API"],
-      github: "https://github.com",
-      live: "https://example.com"
+      title: "Medikit",
+      description: "Co-developed a comprehensive Django-based healthcare platform featuring pathology report management, medical articles repository, and seamless doctor-patient interaction system.",
+      tech: ["Django", "Python", "PostgreSQL", "Bootstrap"],
+      github: "https://github.com/VaibhavMonpara",
+      live: "https://vaibhavmonpara.netlify.app"
     }
   ];
 
@@ -45,7 +38,7 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div
               key={index}

@@ -5,17 +5,17 @@ const About = () => {
     {
       icon: Code2,
       title: "Full-Stack Developer",
-      description: "Expert in building scalable applications with modern technologies"
+      description: "Expert in building scalable applications with Python, Node.js, React, and cloud technologies"
     },
     {
       icon: Palette,
-      title: "Design Enthusiast",
-      description: "Crafting beautiful, user-centric interfaces that delight"
+      title: "Cloud & DevOps",
+      description: "Experienced with AWS, Docker, Kubernetes, and CI/CD pipelines for reliable deployments"
     },
     {
       icon: Rocket,
       title: "Problem Solver",
-      description: "Transforming complex challenges into elegant solutions"
+      description: "Leading Agile teams and delivering high-impact solutions with 99% uptime"
     }
   ];
 
@@ -27,7 +27,7 @@ const About = () => {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A passionate software engineer who loves building products that combine backend logic with delightful front-end experiences
+            Software Engineer passionate about building distributed systems and scalable applications
           </p>
         </div>
 
@@ -50,13 +50,15 @@ const About = () => {
         <div className="glass-strong p-8 md:p-12 rounded-3xl">
           <div className="max-w-3xl mx-auto">
             <p className="text-lg leading-relaxed text-foreground/90 mb-6">
-              I'm a software engineer with a passion for creating elegant solutions to complex problems. 
-              My journey in tech has been driven by curiosity and a love for learning new technologies.
+              I'm a Software Engineer currently working at AirKitchenz in Los Angeles, where I engineer distributed 
+              systems with Python and Node.js, achieving 99% uptime and scalable request handling. I specialize in 
+              building cloud-native architectures using AWS services and implementing robust CI/CD pipelines.
             </p>
             <p className="text-lg leading-relaxed text-foreground/90">
-              When I'm not coding, you'll find me exploring new frameworks, contributing to open source, 
-              or designing the next big thing. I believe in writing clean, maintainable code that makes 
-              a difference.
+              With a Master's degree in Computer Science from California State University, Fullerton, and previous 
+              experience at Midocean Technologies, I've developed expertise in full-stack development, DevOps, and 
+              leading Agile teams. I'm passionate about clean code, mentoring peers, and delivering high-quality 
+              solutions that make a real impact.
             </p>
           </div>
         </div>

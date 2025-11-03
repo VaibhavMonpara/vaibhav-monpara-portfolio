@@ -1,28 +1,18 @@
 const Experience = () => {
   const experiences = [
     {
-      year: "2023 - Present",
-      role: "Senior Software Engineer",
-      company: "Tech Innovations Inc.",
-      description: "Leading development of scalable microservices architecture and mentoring junior developers. Built high-performance APIs handling millions of requests daily."
+      year: "Aug 2024 - Present",
+      role: "Software Engineer",
+      company: "AirKitchenz",
+      location: "Los Angeles, CA - Hybrid",
+      description: "Engineered distributed systems with Python and Node.js, enabling 99% uptime and scalable request handling. Built CI/CD pipelines with GitHub Actions, cutting deployment cycles by 30%. Spearheaded infrastructure migration to cloud-native AWS architecture (EC2, S3, Lambda, RDS), reducing costs by 20% and enhancing fault tolerance."
     },
     {
-      year: "2021 - 2023",
-      role: "Full Stack Developer",
-      company: "Digital Solutions Ltd.",
-      description: "Developed and maintained multiple client-facing applications. Implemented CI/CD pipelines and improved application performance by 40%."
-    },
-    {
-      year: "2020 - 2021",
-      role: "Frontend Developer",
-      company: "Creative Web Studio",
-      description: "Created responsive web applications with modern frameworks. Collaborated with designers to implement pixel-perfect UI components."
-    },
-    {
-      year: "2019 - 2020",
-      role: "Junior Developer",
-      company: "StartUp Ventures",
-      description: "Contributed to full-stack development projects. Learned best practices in software development and agile methodologies."
+      year: "Oct 2020 - May 2022",
+      role: "Software Engineer",
+      company: "Midocean Technologies",
+      location: "Ahmedabad, IND - On-site",
+      description: "Developed modular full-stack solutions in Python (Django), C#, .NET Core, and Java, improving system scalability and maintainability. Designed and deployed RESTful APIs and process automation tools, reducing manual workloads by 30%. Managed end-to-end DevOps delivery using Azure, integrating CI/CD for faster and more reliable deployments."
     }
   ];
 
@@ -59,7 +49,8 @@ const Experience = () => {
                   <h3 className="text-xl font-semibold mt-2 mb-1 group-hover:text-primary transition-smooth">
                     {exp.role}
                   </h3>
-                  <h4 className="text-muted-foreground font-medium mb-3">{exp.company}</h4>
+                  <h4 className="text-muted-foreground font-medium mb-1">{exp.company}</h4>
+                  <p className="text-sm text-muted-foreground/70 mb-3">{exp.location}</p>
                   <p className="text-foreground/80 leading-relaxed">{exp.description}</p>
                 </div>
               </div>

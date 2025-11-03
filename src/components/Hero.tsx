@@ -50,10 +50,10 @@ const Hero = () => {
         <div className="flex flex-wrap gap-4 justify-center mb-12">
           <Button 
             size="lg" 
-            onClick={() => scrollToSection("projects")}
+            onClick={() => scrollToSection("about")}
             className="glass-strong hover:glow-primary transition-smooth group"
           >
-            View My Work
+            About Me
             <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
           </Button>
           <Button 
@@ -68,7 +68,7 @@ const Hero = () => {
 
         <div className="flex gap-4 justify-center">
           <a 
-            href="https://github.com" 
+            href="https://github.com/VaibhavMonpara" 
             target="_blank" 
             rel="noopener noreferrer"
             className="p-3 glass rounded-full hover:glass-strong hover:glow-primary transition-smooth hover:scale-110"
@@ -76,7 +76,7 @@ const Hero = () => {
             <Github className="h-5 w-5" />
           </a>
           <a 
-            href="https://linkedin.com" 
+            href="https://linkedin.com/in/vaibhav-monpara" 
             target="_blank" 
             rel="noopener noreferrer"
             className="p-3 glass rounded-full hover:glass-strong hover:glow-primary transition-smooth hover:scale-110"
@@ -84,7 +84,7 @@ const Hero = () => {
             <Linkedin className="h-5 w-5" />
           </a>
           <a 
-            href="mailto:vaibhav@example.com"
+            href="mailto:vaibhav98patel@gmail.com"
             className="p-3 glass rounded-full hover:glass-strong hover:glow-primary transition-smooth hover:scale-110"
           >
             <Mail className="h-5 w-5" />
