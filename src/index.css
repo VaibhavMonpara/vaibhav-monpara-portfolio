@@ -8,56 +8,56 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 26% 6%;
-    --foreground: 210 40% 98%;
+    --background: 220 20% 96%;
+    --foreground: 220 26% 14%;
 
-    --card: 220 20% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 26% 14%;
 
-    --popover: 220 20% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 26% 14%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 220 26% 6%;
+    --primary: 217 91% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 16%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 220 26% 14%;
 
-    --muted: 220 14% 16%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 14% 92%;
+    --muted-foreground: 215 20% 40%;
 
     --accent: 189 94% 43%;
-    --accent-foreground: 220 26% 6%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 16%;
-    --input: 220 14% 16%;
-    --ring: 217 91% 60%;
+    --border: 220 14% 88%;
+    --input: 220 14% 88%;
+    --ring: 217 91% 50%;
 
     --radius: 0.75rem;
 
     /* Custom Design Tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(189 94% 43%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(220 26% 6%) 0%, hsl(220 20% 10%) 50%, hsl(220 26% 6%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(220 20% 10% / 0.5) 0%, hsl(220 26% 6% / 0.8) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 50%) 0%, hsl(189 94% 43%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 20% 96%) 0%, hsl(220 14% 92%) 50%, hsl(220 20% 96%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100% / 0.5) 0%, hsl(220 20% 96% / 0.8) 100%);
     
-    --glow-primary: 0 0 30px hsl(217 91% 60% / 0.3);
+    --glow-primary: 0 0 30px hsl(217 91% 50% / 0.25);
     --glow-accent: 0 0 40px hsl(189 94% 43% / 0.2);
-    --shadow-glass: 0 8px 32px 0 hsl(0 0% 0% / 0.37);
+    --shadow-glass: 0 8px 32px 0 hsl(0 0% 0% / 0.1);
     
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-background: 220 20% 10%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 26% 14%;
+    --sidebar-primary: 217 91% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 92%;
+    --sidebar-accent-foreground: 220 26% 14%;
+    --sidebar-border: 220 14% 88%;
+    --sidebar-ring: 217 91% 50%;
   }
 }
 
@@ -69,8 +69,8 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground font-['Inter',sans-serif] antialiased;
     background: hsl(var(--background));
-    background-image: radial-gradient(circle at 20% 20%, hsl(217 91% 60% / 0.1) 0%, transparent 50%),
-                      radial-gradient(circle at 80% 80%, hsl(189 94% 43% / 0.1) 0%, transparent 50%);
+    background-image: radial-gradient(circle at 20% 20%, hsl(217 91% 50% / 0.08) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, hsl(189 94% 43% / 0.08) 0%, transparent 50%);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -80,16 +80,16 @@ All colors MUST be HSL.
 
 @layer utilities {
   .glass {
-    background: hsl(var(--card) / 0.5);
+    background: hsl(var(--card) / 0.6);
     backdrop-filter: blur(12px);
-    border: 1px solid hsl(var(--border) / 0.5);
+    border: 1px solid hsl(var(--border));
     box-shadow: var(--shadow-glass);
   }
 
   .glass-strong {
-    background: hsl(var(--card) / 0.8);
+    background: hsl(var(--card) / 0.9);
     backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--border) / 0.6);
+    border: 1px solid hsl(var(--border));
     box-shadow: var(--shadow-glass);
   }
 
