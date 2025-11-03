@@ -1,39 +1,65 @@
-import { ExternalLink, Github } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Github } from "lucide-react";
 
 const Projects = () => {
   const projects = [
     {
       title: "AI-Powered Recruiting Agent",
-      description: "Developed an AI-driven recruiting tool automating email outreach with responsive UI and scalable backend. Integrated Google Gemini AI for intelligent candidate matching and communication.",
+      description:
+        "Developed an AI-driven recruiting tool automating email outreach with responsive UI and scalable backend. Integrated Google Gemini AI for intelligent candidate matching and communication.",
       tech: ["React", "Flask", "PostgreSQL", "Google Gemini AI"],
-      github: "https://github.com/VaibhavMonpara",
-      live: "https://vaibhavmonpara.netlify.app"
+      github: "https://github.com/VaibhavMonpara/AI-Recruiting-Agent",
+      image: "/logos/projects/ai.png",
     },
     {
       title: "Energy Consumption and Sustainability Analytics",
-      description: "Analyzed renewable energy data to forecast usage patterns. Implemented interactive Plotly Dash dashboard for visualizing energy consumption trends and sustainability metrics.",
+      description:
+        "Analyzed renewable energy data to forecast usage patterns. Implemented interactive Plotly Dash dashboard for visualizing energy consumption trends and sustainability metrics.",
       tech: ["Python", "Pandas", "Scikit-learn", "Plotly Dash"],
-      github: "https://github.com/VaibhavMonpara",
-      live: "https://vaibhavmonpara.netlify.app"
+      github: "https://github.com/VaibhavMonpara/ecsa-project",
+      image: "/logos/projects/esca.png",
     },
     {
       title: "Medikit",
-      description: "Co-developed a comprehensive Django-based healthcare platform featuring pathology report management, medical articles repository, and seamless doctor-patient interaction system.",
+      description:
+        "Co-developed a comprehensive Django-based healthcare platform featuring pathology report management, medical articles repository, and seamless doctor-patient interaction system.",
       tech: ["Django", "Python", "PostgreSQL", "Bootstrap"],
       github: "https://github.com/VaibhavMonpara",
-      live: "https://vaibhavmonpara.netlify.app"
-    }
+      image: "/logos/projects/medikit1.png",
+    },
+    {
+      title: "PMS Project",
+      description:
+        "Developed a Property Management System using Python, PostgreSQL, JavaScript and XML, with integrated APIs for real-time data retrieval, improving management efficiency by 40%.",
+      tech: ["Python", "JavaScript", "PostgreSQL", "XML"],
+      github: "https://github.com/VaibhavMonpara/pms",
+      image: "/logos/projects/pms.png",
+    },
+    {
+      title: "Uber Review Analysis",
+      description:
+        "Built an analysis system to evaluate Uber customer reviews and classify feedback into positive, neutral, and negative sentiments.",
+      tech: ["Python", "PySpark", "Pandas", "Numpy", "Matplotlib"],
+      github: "https://github.com/VaibhavMonpara/ADV-DBM-PROJECT",
+      image: "/logos/projects/uber.png",
+    },
+    {
+      title: "E-commerce web app",
+      description:
+        "Developed a full-stack e-commerce application with integrated ordering, cart, and real-time tracking features. Implemented secure checkout, dynamic inventory updates, and order-status visualization to enhance user experience and streamline purchase flow.",
+      tech: ["Python", "Django", "SQLite", "JavaScript", "HTML", "CSS"],
+      github: "https://github.com/VaibhavMonpara/MyAwesomeCart",
+      image: "/logos/projects/ecommerce.png",
+    },
   ];
 
   return (
     <section id="projects" className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Featured <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-sm md:text-base">
             Some of my recent work and side projects
           </p>
         </div>
@@ -42,49 +68,47 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="glass p-8 rounded-2xl hover:glass-strong transition-smooth hover:-translate-y-2 group animate-fade-in-up"
+              className="glass rounded-2xl hover:glass-strong transition-smooth hover:-translate-y-2 group animate-fade-in-up overflow-hidden flex flex-col h-[550px]"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <h3 className="text-2xl font-semibold mb-3 group-hover:text-primary transition-smooth">
-                {project.title}
-              </h3>
-              <p className="text-muted-foreground mb-4 leading-relaxed">
-                {project.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tech.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
+              {/* Image - Top Half */}
+              <div className="h-1/2 bg-gradient-to-br from-primary/20 to-accent/20 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
-              <div className="flex gap-3">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="glass hover:glass-strong transition-smooth"
-                  asChild
+              {/* Content - Bottom Half */}
+              <div className="h-1/2 p-6 flex flex-col relative pb-4">
+                <h3 className="text-base md:text-lg font-semibold mb-3 group-hover:text-primary transition-smooth">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-grow">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5 mb-4 pr-14">
+                  {project.tech.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-2 py-0.5 bg-primary/10 text-primary rounded-full text-xs font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* GitHub Icon Only - Bottom Right */}
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 right-4 p-2 glass hover:glass-strong rounded-lg transition-smooth hover:text-primary"
                 >
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="h-4 w-4 mr-2" />
-                    Code
-                  </a>
-                </Button>
-                <Button
-                  size="sm"
-                  className="bg-primary hover:bg-primary/90 transition-smooth"
-                  asChild
-                >
-                  <a href={project.live} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Live Demo
-                  </a>
-                </Button>
+                  <Github className="h-5 w-5" />
+                </a>
               </div>
             </div>
           ))}

@@ -33,16 +33,16 @@ const Hero = () => {
           </span>
         </div>
         
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
           Hi, I'm{" "}
           <span className="gradient-text">Vaibhav Monpara</span>
         </h1>
         
-        <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-4 font-light">
+        <p className="text-base md:text-lg text-muted-foreground mb-4 font-light">
           Software Engineer
         </p>
         
-        <p className="text-lg md:text-xl text-muted-foreground/80 max-w-2xl mx-auto mb-12 leading-relaxed">
+        <p className="text-sm md:text-base text-muted-foreground/80 max-w-2xl mx-auto mb-12 leading-relaxed">
           Building digital experiences that blend logic with design
         </p>
 

@@ -25,10 +25,10 @@ const Experience = () => {
     <section id="experience" className="py-24 px-4 bg-gradient-to-b from-background/50 to-background">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Work <span className="gradient-text">Experience</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-sm md:text-base">
             My professional journey in software development
           </p>
         </div>
@@ -60,12 +60,12 @@ const Experience = () => {
 
                     <div className="flex-1">
                       <span className="text-primary font-semibold text-sm">{exp.year}</span>
-                      <h3 className="text-xl font-semibold mt-2 mb-1 group-hover:text-primary transition-smooth">
+                      <h3 className="text-base md:text-lg font-semibold mt-2 mb-1 group-hover:text-primary transition-smooth">
                         {exp.role}
                       </h3>
-                      <h4 className="text-muted-foreground font-medium mb-1">{exp.company}</h4>
-                      <p className="text-sm text-muted-foreground/70 mb-3">{exp.location}</p>
-                      <p className="text-foreground/80 leading-relaxed">{exp.description}</p>
+                      <h4 className="text-muted-foreground text-sm font-medium mb-1">{exp.company}</h4>
+                      <p className="text-xs text-muted-foreground/70 mb-3">{exp.location}</p>
+                      <p className="text-sm text-foreground/80 leading-relaxed">{exp.description}</p>
                     </div>
                   </div>
                 </div>

@@ -31,10 +31,10 @@ const Contact = () => {
     <section id="contact" className="py-24 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Let's <span className="gradient-text">Connect</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-sm md:text-base">
             Have a project in mind? Let's work together
           </p>
         </div>
@@ -48,8 +48,8 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Email</h3>
-                  <p className="text-muted-foreground">vaibhav98patel@gmail.com</p>
+                  <h3 className="text-sm font-semibold mb-1">Email</h3>
+                  <p className="text-sm text-muted-foreground">vaibhav98patel@gmail.com</p>
                 </div>
               </div>
             </div>
@@ -60,14 +60,14 @@ const Contact = () => {
                   <MessageSquare className="h-6 w-6 text-accent" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Let's Chat</h3>
-                  <p className="text-muted-foreground">Always open to discussing new projects and opportunities</p>
+                  <h3 className="text-sm font-semibold mb-1">Let's Chat</h3>
+                  <p className="text-sm text-muted-foreground">Always open to discussing new projects and opportunities</p>
                 </div>
               </div>
             </div>
 
             <div className="glass-strong p-8 rounded-2xl">
-              <p className="text-foreground/90 leading-relaxed">
+              <p className="text-sm text-foreground/90 leading-relaxed">
                 Whether you have a question, a project idea, or just want to say hi, 
                 feel free to reach out. I'll do my best to get back to you as soon as possible!
               </p>

@@ -41,10 +41,10 @@ const Education = () => {
     <section id="education" className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="gradient-text">Education</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-sm md:text-base">
             My academic background and qualifications
           </p>
         </div>
@@ -75,17 +75,17 @@ const Education = () => {
                     </div>
 
                     <div className="flex-1">
-                      <h3 className="text-2xl font-semibold mb-2 text-primary">
+                      <h3 className="text-base md:text-lg font-semibold mb-2 text-primary">
                         {edu.degree}
                       </h3>
-                      <h4 className="text-xl font-medium mb-1">{edu.institution}</h4>
-                      <p className="text-muted-foreground text-sm mb-1">{edu.location}</p>
-                      <p className="text-muted-foreground text-sm font-medium">{edu.period}</p>
+                      <h4 className="text-sm md:text-base font-medium mb-1">{edu.institution}</h4>
+                      <p className="text-muted-foreground text-xs mb-1">{edu.location}</p>
+                      <p className="text-muted-foreground text-xs font-medium">{edu.period}</p>
                     </div>
                   </div>
 
                   <div>
-                    <h5 className="font-semibold mb-3 text-foreground/90">Relevant Coursework:</h5>
+                    <h5 className="text-sm font-semibold mb-3 text-foreground/90">Relevant Coursework:</h5>
                     <div className="flex flex-wrap gap-2">
                       {edu.coursework.map((course, courseIndex) => (
                         <span
