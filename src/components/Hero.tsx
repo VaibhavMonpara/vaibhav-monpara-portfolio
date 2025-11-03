@@ -1,5 +1,4 @@
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/profile.jpg";
 
 const Hero = () => {
@@ -8,7 +7,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-20">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
@@ -47,25 +46,6 @@ const Hero = () => {
           Building digital experiences that blend logic with design
         </p>
 
-        <div className="flex flex-wrap gap-4 justify-center mb-12">
-          <Button 
-            size="lg" 
-            onClick={() => scrollToSection("about")}
-            className="glass-strong hover:glow-primary transition-smooth group"
-          >
-            About Me
-            <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
-          </Button>
-          <Button 
-            size="lg" 
-            variant="outline"
-            onClick={() => scrollToSection("contact")}
-            className="glass hover:glass-strong transition-smooth"
-          >
-            Get in Touch
-          </Button>
-        </div>
-
         <div className="flex gap-4 justify-center">
           <a 
             href="https://github.com/VaibhavMonpara" 
@@ -93,7 +73,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer" onClick={() => scrollToSection("about")}>
         <ArrowDown className="h-6 w-6 text-muted-foreground" />
       </div>
     </section>

@@ -1,3 +1,6 @@
+import { Building2 } from "lucide-react";
+import { useState } from "react";
+
 const Experience = () => {
   const experiences = [
     {
@@ -5,6 +8,7 @@ const Experience = () => {
       role: "Software Engineer",
       company: "AirKitchenz",
       location: "Los Angeles, CA - Hybrid",
+      logo: "/logos/companies/airkitchenz.png",
       description: "Engineered distributed systems with Python and Node.js, enabling 99% uptime and scalable request handling. Built CI/CD pipelines with GitHub Actions, cutting deployment cycles by 30%. Spearheaded infrastructure migration to cloud-native AWS architecture (EC2, S3, Lambda, RDS), reducing costs by 20% and enhancing fault tolerance."
     },
     {
@@ -12,6 +16,7 @@ const Experience = () => {
       role: "Software Engineer",
       company: "Midocean Technologies",
       location: "Ahmedabad, IND - On-site",
+      logo: "/logos/companies/midocean.png",
       description: "Developed modular full-stack solutions in Python (Django), C#, .NET Core, and Java, improving system scalability and maintainability. Designed and deployed RESTful APIs and process automation tools, reducing manual workloads by 30%. Managed end-to-end DevOps delivery using Azure, integrating CI/CD for faster and more reliable deployments."
     }
   ];
@@ -28,34 +33,47 @@ const Experience = () => {
           </p>
         </div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary"></div>
+        <div className="space-y-6">
+          {experiences.map((exp, index) => {
+            const ExperienceCard = () => {
+              const [logoError, setLogoError] = useState(false);
+              
+              return (
+                <div
+                  className="glass p-6 rounded-2xl hover:glass-strong transition-smooth hover:-translate-y-1 group animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="flex items-start gap-4">
+                    {/* Company Logo */}
+                    <div className="flex-shrink-0 w-16 h-16 rounded-2xl glass-strong p-2 flex items-center justify-center overflow-hidden">
+                      {exp.logo && !logoError ? (
+                        <img
+                          src={exp.logo}
+                          alt={`${exp.company} logo`}
+                          className="w-full h-full object-contain rounded-xl"
+                          onError={() => setLogoError(true)}
+                        />
+                      ) : (
+                        <Building2 className="w-8 h-8 text-primary" />
+                      )}
+                    </div>
 
-          {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className={`relative mb-12 animate-fade-in-up ${
-                index % 2 === 0 ? "md:pr-1/2 md:text-right" : "md:pl-1/2 md:ml-auto"
-              }`}
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              {/* Timeline dot */}
-              <div className="absolute left-8 md:left-1/2 top-6 w-4 h-4 -ml-2 rounded-full bg-primary glow-primary"></div>
-
-              <div className="ml-16 md:ml-0">
-                <div className="glass p-6 rounded-2xl hover:glass-strong transition-smooth hover:-translate-y-1 group">
-                  <span className="text-primary font-semibold text-sm">{exp.year}</span>
-                  <h3 className="text-xl font-semibold mt-2 mb-1 group-hover:text-primary transition-smooth">
-                    {exp.role}
-                  </h3>
-                  <h4 className="text-muted-foreground font-medium mb-1">{exp.company}</h4>
-                  <p className="text-sm text-muted-foreground/70 mb-3">{exp.location}</p>
-                  <p className="text-foreground/80 leading-relaxed">{exp.description}</p>
+                    <div className="flex-1">
+                      <span className="text-primary font-semibold text-sm">{exp.year}</span>
+                      <h3 className="text-xl font-semibold mt-2 mb-1 group-hover:text-primary transition-smooth">
+                        {exp.role}
+                      </h3>
+                      <h4 className="text-muted-foreground font-medium mb-1">{exp.company}</h4>
+                      <p className="text-sm text-muted-foreground/70 mb-3">{exp.location}</p>
+                      <p className="text-foreground/80 leading-relaxed">{exp.description}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            };
+            
+            return <ExperienceCard key={index} />;
+          })}
         </div>
       </div>
     </section>
