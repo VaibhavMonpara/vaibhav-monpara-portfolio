@@ -1,4 +1,5 @@
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import profileImage from "@/assets/profile.jpg";
 
 const Hero = () => {
@@ -6,76 +7,189 @@ const Hero = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+  const scale = useTransform(scrollY, [0, 500], [1, 0.8]);
+  const y = useTransform(scrollY, [0, 500], [0, 100]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-20">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-      </div>
+      {/* Animated background elements with parallax */}
+      <motion.div 
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        style={{ opacity: useTransform(scrollY, [0, 500], [1, 0.3]) }}
+      >
+        <motion.div 
+          className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
+          animate={{ 
+            y: [0, -30, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ 
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
+          animate={{ 
+            y: [0, 30, 0],
+            scale: [1, 1.15, 1],
+          }}
+          transition={{ 
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
+      </motion.div>
 
-      <div className="max-w-5xl mx-auto text-center relative z-10 animate-fade-in-up">
+      <motion.div 
+        className="max-w-6xl mx-auto text-center relative z-10"
+        style={{ opacity, scale, y }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {/* Profile Image */}
-        <div className="mb-8 flex justify-center">
+        <motion.div 
+          className="mb-12 flex justify-center"
+          variants={itemVariants}
+        >
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-50 animate-pulse"></div>
-            <img 
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-2xl opacity-60"
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.6, 0.8, 0.6],
+              }}
+              transition={{ 
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            <motion.img 
               src={profileImage} 
               alt="Vaibhav Monpara" 
-              className="relative w-40 h-40 rounded-full object-cover border-4 border-card glass-strong shadow-2xl"
+              className="relative w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-[3px] border-white/20 shadow-2xl"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             />
           </div>
-        </div>
+        </motion.div>
         
-        <div className="mb-6">
-          <span className="inline-block px-4 py-2 rounded-full glass text-sm font-medium text-muted-foreground mb-4">
+        <motion.div 
+          className="mb-8"
+          variants={itemVariants}
+        >
+          <motion.span 
+            className="inline-block px-6 py-3 rounded-full glass text-sm font-medium text-muted-foreground backdrop-blur-xl"
+            whileHover={{ scale: 1.05 }}
+          >
             👋 Welcome to my portfolio
-          </span>
-        </div>
+          </motion.span>
+        </motion.div>
         
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+        <motion.h1 
+          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-[1.1] tracking-tight"
+          variants={itemVariants}
+        >
           Hi, I'm{" "}
-          <span className="gradient-text">Vaibhav Monpara</span>
-        </h1>
+          <span className="gradient-text block mt-2">Vaibhav Monpara</span>
+        </motion.h1>
         
-        <p className="text-base md:text-lg text-muted-foreground mb-4 font-light">
+        <motion.p 
+          className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-6 font-light tracking-wide"
+          variants={itemVariants}
+        >
           Software Engineer
-        </p>
+        </motion.p>
         
-        <p className="text-sm md:text-base text-muted-foreground/80 max-w-2xl mx-auto mb-12 leading-relaxed">
+        <motion.p 
+          className="text-lg md:text-xl text-muted-foreground/70 max-w-3xl mx-auto mb-16 leading-relaxed font-light"
+          variants={itemVariants}
+        >
           Building digital experiences that blend logic with design
-        </p>
+        </motion.p>
 
-        <div className="flex gap-4 justify-center">
-          <a 
+        <motion.div 
+          className="flex gap-6 justify-center"
+          variants={itemVariants}
+        >
+          <motion.a 
             href="https://github.com/VaibhavMonpara" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="p-3 glass rounded-full hover:glass-strong hover:glow-primary transition-smooth hover:scale-110"
+            className="p-4 glass rounded-full hover:glass-strong backdrop-blur-xl"
+            whileHover={{ scale: 1.15, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400 }}
           >
-            <Github className="h-5 w-5" />
-          </a>
-          <a 
+            <Github className="h-6 w-6" />
+          </motion.a>
+          <motion.a 
             href="https://linkedin.com/in/vaibhav-monpara" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="p-3 glass rounded-full hover:glass-strong hover:glow-primary transition-smooth hover:scale-110"
+            className="p-4 glass rounded-full hover:glass-strong backdrop-blur-xl"
+            whileHover={{ scale: 1.15, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400 }}
           >
-            <Linkedin className="h-5 w-5" />
-          </a>
-          <a 
+            <Linkedin className="h-6 w-6" />
+          </motion.a>
+          <motion.a 
             href="mailto:vaibhav98patel@gmail.com"
-            className="p-3 glass rounded-full hover:glass-strong hover:glow-primary transition-smooth hover:scale-110"
+            className="p-4 glass rounded-full hover:glass-strong backdrop-blur-xl"
+            whileHover={{ scale: 1.15, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400 }}
           >
-            <Mail className="h-5 w-5" />
-          </a>
-        </div>
-      </div>
+            <Mail className="h-6 w-6" />
+          </motion.a>
+        </motion.div>
+      </motion.div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer" onClick={() => scrollToSection("about")}>
-        <ArrowDown className="h-6 w-6 text-muted-foreground" />
-      </div>
+      <motion.div 
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer z-20"
+        onClick={() => scrollToSection("about")}
+        animate={{ y: [0, 10, 0] }}
+        transition={{ 
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        whileHover={{ scale: 1.2 }}
+      >
+        <ArrowDown className="h-7 w-7 text-muted-foreground" />
+      </motion.div>
     </section>
   );
 };

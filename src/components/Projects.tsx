@@ -1,6 +1,24 @@
 import { Github } from "lucide-react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const Projects = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center", "end start"],
+  });
+
+  // Hero-style fade effect: fade in as section enters, fade out as it leaves
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.7, 1],
+    [0.8, 1, 1, 0.8]
+  );
+  const y = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [50, 0, 0, -50]);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   const projects = [
     {
       title: "AI-Powered Recruiting Agent",
@@ -52,68 +70,119 @@ const Projects = () => {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 80, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  };
+
   return (
-    <section id="projects" className="py-24 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+    <section id="projects" ref={sectionRef} className="py-32 px-4 relative">
+      <motion.div className="max-w-7xl mx-auto" style={{ opacity, scale, y }}>
+        <motion.div
+          className="text-center mb-24"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
             Featured <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-muted-foreground text-sm md:text-base">
+          <p className="text-xl md:text-2xl text-muted-foreground font-light">
             Some of my recent work and side projects
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {projects.map((project, index) => (
-            <div
+            <motion.div
               key={index}
-              className="glass rounded-2xl hover:glass-strong transition-smooth hover:-translate-y-2 group animate-fade-in-up overflow-hidden flex flex-col h-[550px]"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="glass rounded-3xl overflow-hidden flex flex-col h-[500px] group relative"
+              variants={cardVariants}
+              whileHover={{ y: -8 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
-              {/* Image - Top Half */}
-              <div className="h-1/2 bg-gradient-to-br from-primary/20 to-accent/20 overflow-hidden">
+              {/* Image - Top Half with overlay */}
+              <div className="h-2/5 bg-gradient-to-br from-primary/20 to-accent/20 overflow-hidden relative">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* Content - Bottom Half */}
-              <div className="h-1/2 p-6 flex flex-col relative pb-4">
-                <h3 className="text-base md:text-lg font-semibold mb-3 group-hover:text-primary transition-smooth">
+              <div className="h-3/5 p-6 flex flex-col relative bg-gradient-to-b from-transparent to-primary/5">
+                <h3 className="text-lg md:text-xl font-semibold mb-3 group-hover:text-primary transition-colors line-clamp-2">
                   {project.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-grow">
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-grow font-light line-clamp-3">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-1.5 mb-4 pr-14">
-                  {project.tech.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-2 py-0.5 bg-primary/10 text-primary rounded-full text-xs font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                {/* Skills and GitHub container - aligned at bottom */}
+                <div className="mt-auto">
+                  <div className="flex flex-wrap gap-2 mb-4 pr-12">
+                    {project.tech.map((tech, techIndex) => (
+                      <motion.span
+                        key={techIndex}
+                        className="px-2.5 py-1 bg-primary/15 text-primary rounded-full text-xs font-medium backdrop-blur-sm"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={
+                          isInView
+                            ? { opacity: 1, scale: 1 }
+                            : { opacity: 0, scale: 0.8 }
+                        }
+                        transition={{
+                          delay: 0.5 + index * 0.1 + techIndex * 0.05,
+                        }}
+                        whileHover={{ scale: 1.1 }}
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </div>
 
-                {/* GitHub Icon Only - Bottom Right */}
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute bottom-4 right-4 p-2 glass hover:glass-strong rounded-lg transition-smooth hover:text-primary"
-                >
-                  <Github className="h-5 w-5" />
-                </a>
+                  {/* GitHub Link - Bottom Right */}
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute bottom-4 right-4 p-2.5 glass hover:glass-strong rounded-lg transition-smooth group/link"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Github className="h-4 w-4 group-hover/link:text-primary transition-colors" />
+                  </motion.a>
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

@@ -4,8 +4,22 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, MessageSquare, Send } from "lucide-react";
 import { toast } from "sonner";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const Contact = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center", "end start"]
+  });
+  
+  // Hero-style fade effect: fade in as section enters, fade out as it leaves
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8]);
+  const y = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [50, 0, 0, -50]);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,55 +41,115 @@ const Contact = () => {
     }));
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
-    <section id="contact" className="py-24 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+    <section id="contact" ref={sectionRef} className="py-32 px-4 relative">
+      <motion.div 
+        className="max-w-6xl mx-auto"
+        style={{ opacity, scale, y }}
+      >
+        <motion.div 
+          className="text-center mb-24"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
             Let's <span className="gradient-text">Connect</span>
           </h2>
-          <p className="text-muted-foreground text-sm md:text-base">
+          <p className="text-xl md:text-2xl text-muted-foreground font-light">
             Have a project in mind? Let's work together
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <motion.div 
+          className="grid md:grid-cols-2 gap-10"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {/* Contact Info */}
-          <div className="space-y-6 animate-slide-in-right">
-            <div className="glass p-6 rounded-2xl hover:glass-strong transition-smooth">
+          <motion.div 
+            className="space-y-6"
+            variants={itemVariants}
+          >
+            <motion.div 
+              className="glass p-8 rounded-3xl hover:glass-strong transition-smooth group"
+              whileHover={{ y: -5, scale: 1.02 }}
+            >
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />
-                </div>
+                <motion.div 
+                  className="p-4 rounded-2xl bg-primary/15"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Mail className="h-7 w-7 text-primary" />
+                </motion.div>
                 <div>
-                  <h3 className="text-sm font-semibold mb-1">Email</h3>
-                  <p className="text-sm text-muted-foreground">vaibhav98patel@gmail.com</p>
+                  <h3 className="text-lg font-semibold mb-2">Email</h3>
+                  <p className="text-base text-muted-foreground font-light">vaibhav98patel@gmail.com</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="glass p-6 rounded-2xl hover:glass-strong transition-smooth">
+            <motion.div 
+              className="glass p-8 rounded-3xl hover:glass-strong transition-smooth group"
+              whileHover={{ y: -5, scale: 1.02 }}
+            >
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-accent/10">
-                  <MessageSquare className="h-6 w-6 text-accent" />
-                </div>
+                <motion.div 
+                  className="p-4 rounded-2xl bg-accent/15"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <MessageSquare className="h-7 w-7 text-accent" />
+                </motion.div>
                 <div>
-                  <h3 className="text-sm font-semibold mb-1">Let's Chat</h3>
-                  <p className="text-sm text-muted-foreground">Always open to discussing new projects and opportunities</p>
+                  <h3 className="text-lg font-semibold mb-2">Let's Chat</h3>
+                  <p className="text-base text-muted-foreground font-light">Always open to discussing new projects and opportunities</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="glass-strong p-8 rounded-2xl">
-              <p className="text-sm text-foreground/90 leading-relaxed">
+            <motion.div 
+              className="glass-strong p-10 rounded-3xl"
+              whileHover={{ scale: 1.02 }}
+            >
+              <p className="text-base text-foreground/90 leading-relaxed font-light">
                 Whether you have a question, a project idea, or just want to say hi, 
                 feel free to reach out. I'll do my best to get back to you as soon as possible!
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="glass-strong p-8 rounded-2xl animate-fade-in-up">
+          <motion.form 
+            onSubmit={handleSubmit} 
+            className="glass-strong p-10 rounded-3xl"
+            variants={itemVariants}
+            whileHover={{ scale: 1.01 }}
+          >
             <div className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -124,18 +198,20 @@ const Contact = () => {
                 />
               </div>
 
-              <Button 
-                type="submit" 
-                className="w-full bg-primary hover:bg-primary/90 transition-smooth group"
-                size="lg"
-              >
-                Send Message
-                <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Button 
+                  type="submit" 
+                  className="w-full bg-primary hover:bg-primary/90 transition-smooth group text-base py-6"
+                  size="lg"
+                >
+                  Send Message
+                  <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </motion.div>
             </div>
-          </form>
-        </div>
-      </div>
+          </motion.form>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
