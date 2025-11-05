@@ -1,5 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Code, Database, Cloud, Wrench, Layers } from "lucide-react";
 
 const Skills = () => {
   const sectionRef = useRef(null);
@@ -17,23 +18,43 @@ const Skills = () => {
   const skillCategories = [
     {
       category: "Backend",
-      skills: ["Python", "Java", "Node.js", "Express.js", ".NET C#", ".NET Core", "RESTful APIs", "GraphQL", "SOAP APIs"]
+      icon: Code,
+      skills: ["Python", "Java", "Node.js", "Express.js", ".NET C#", ".NET Core", "RESTful APIs", "GraphQL", "SOAP APIs"],
+      gradient: "from-blue-500/20 to-cyan-500/20",
+      iconBg: "bg-blue-500/20",
+      badgeBg: "bg-blue-500/20"
     },
     {
       category: "Frontend",
-      skills: ["React.js", "Redux", "JavaScript", "TypeScript", "Tailwind CSS", "React Native", "Flutter"]
+      icon: Layers,
+      skills: ["React.js", "Redux", "JavaScript", "TypeScript", "Tailwind CSS", "React Native", "Flutter"],
+      gradient: "from-purple-500/20 to-pink-500/20",
+      iconBg: "bg-purple-500/20",
+      badgeBg: "bg-purple-500/20"
     },
     {
       category: "Databases",
-      skills: ["PostgreSQL", "DynamoDB", "MongoDB", "SQL", "NoSQL"]
+      icon: Database,
+      skills: ["PostgreSQL", "DynamoDB", "MongoDB", "SQL", "NoSQL"],
+      gradient: "from-emerald-500/20 to-teal-500/20",
+      iconBg: "bg-emerald-500/20",
+      badgeBg: "bg-emerald-500/20"
     },
     {
       category: "Cloud & DevOps",
-      skills: ["AWS (EC2, S3, Lambda, RDS)", "Docker", "Kubernetes", "GitHub Actions", "CI/CD", "Azure"]
+      icon: Cloud,
+      skills: ["AWS (EC2, S3, Lambda, RDS)", "Docker", "Kubernetes", "GitHub Actions", "CI/CD", "Azure"],
+      gradient: "from-orange-500/20 to-amber-500/20",
+      iconBg: "bg-orange-500/20",
+      badgeBg: "bg-orange-500/20"
     },
     {
       category: "Tools & Processes",
-      skills: ["Git", "Jira", "Slack", "Agile", "Scrum", "Code Reviews", "Unit Testing", "Integration Testing"]
+      icon: Wrench,
+      skills: ["Git", "Jira", "Slack", "Agile", "Scrum", "Code Reviews", "Unit Testing", "Integration Testing"],
+      gradient: "from-indigo-500/20 to-blue-500/20",
+      iconBg: "bg-indigo-500/20",
+      badgeBg: "bg-indigo-500/20"
     }
   ];
 
@@ -81,43 +102,67 @@ const Skills = () => {
         </motion.div>
 
         <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div 
-              key={categoryIndex}
-              className="glass p-6 rounded-2xl hover:glass-strong transition-smooth group relative overflow-hidden"
-              variants={itemVariants}
-              whileHover={{ y: -4 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            >
+          {skillCategories.map((category, categoryIndex) => {
+            const IconComponent = category.icon;
+            return (
               <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              />
-              <div className="relative z-10">
-                <h3 className="text-lg md:text-xl font-semibold mb-4 text-primary transition-colors">
-                  {category.category}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <motion.span
-                      key={skillIndex}
-                      className="px-3 py-1.5 bg-primary/15 text-primary rounded-lg text-xs font-medium backdrop-blur-sm cursor-default"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ delay: 0.3 + categoryIndex * 0.1 + skillIndex * 0.03 }}
-                      whileHover={{ scale: 1.1 }}
+                key={categoryIndex}
+                className="glass p-6 rounded-2xl hover:glass-strong transition-smooth group relative overflow-hidden border-2 border-transparent hover:border-primary/30"
+                variants={itemVariants}
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              >
+                {/* Animated gradient background */}
+                <motion.div 
+                  className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                />
+                
+                {/* Decorative corner accent */}
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="relative z-10">
+                  {/* Icon and Category Header */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <motion.div 
+                      className={`p-3 rounded-xl ${category.iconBg} group-hover:scale-110 transition-transform duration-300`}
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
                     >
-                      {skill}
-                    </motion.span>
-                  ))}
+                      <IconComponent className="h-6 w-6 text-primary" />
+                    </motion.div>
+                    <h3 className="text-lg md:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                      {category.category}
+                    </h3>
+                  </div>
+                  
+                  {/* Skills Grid */}
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIndex) => (
+                      <motion.span
+                        key={skillIndex}
+                        className={`px-3 py-1.5 ${category.badgeBg} text-primary rounded-lg text-xs font-semibold backdrop-blur-sm cursor-default border border-primary/20 hover:border-primary/40 transition-all`}
+                        initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                        animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 10 }}
+                        transition={{ 
+                          delay: 0.3 + categoryIndex * 0.1 + skillIndex * 0.03,
+                          type: "spring",
+                          stiffness: 300
+                        }}
+                        whileHover={{ scale: 1.15, y: -2 }}
+                      >
+                        {skill}
+                      </motion.span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </motion.div>
       </motion.div>
     </section>
