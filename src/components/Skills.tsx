@@ -20,41 +20,51 @@ const Skills = () => {
       category: "Backend",
       icon: Code,
       skills: ["Python", "Java", "Node.js", "Express.js", ".NET C#", ".NET Core", "RESTful APIs", "GraphQL", "SOAP APIs"],
-      gradient: "from-blue-500/20 to-cyan-500/20",
-      iconBg: "bg-blue-500/20",
-      badgeBg: "bg-blue-500/20"
+      gradient: "from-[#4285F4]/20 to-[#4285F4]/10",
+      iconBg: "bg-[#4285F4]/20",
+      badgeBg: "bg-[#4285F4]/20",
+      iconColor: "text-[#4285F4]",
+      badgeColor: "text-[#4285F4]"
     },
     {
       category: "Frontend",
       icon: Layers,
       skills: ["React.js", "Redux", "JavaScript", "TypeScript", "Tailwind CSS", "React Native", "Flutter"],
-      gradient: "from-purple-500/20 to-pink-500/20",
-      iconBg: "bg-purple-500/20",
-      badgeBg: "bg-purple-500/20"
+      gradient: "from-[#EA4335]/20 to-[#EA4335]/10",
+      iconBg: "bg-[#EA4335]/20",
+      badgeBg: "bg-[#EA4335]/20",
+      iconColor: "text-[#EA4335]",
+      badgeColor: "text-[#EA4335]"
     },
     {
       category: "Databases",
       icon: Database,
       skills: ["PostgreSQL", "DynamoDB", "MongoDB", "SQL", "NoSQL"],
-      gradient: "from-emerald-500/20 to-teal-500/20",
-      iconBg: "bg-emerald-500/20",
-      badgeBg: "bg-emerald-500/20"
+      gradient: "from-[#FBBC05]/20 to-[#FBBC05]/10",
+      iconBg: "bg-[#FBBC05]/20",
+      badgeBg: "bg-[#FBBC05]/20",
+      iconColor: "text-[#FBBC05]",
+      badgeColor: "text-[#FBBC05]"
     },
     {
       category: "Cloud & DevOps",
       icon: Cloud,
       skills: ["AWS (EC2, S3, Lambda, RDS)", "Docker", "Kubernetes", "GitHub Actions", "CI/CD", "Azure"],
-      gradient: "from-orange-500/20 to-amber-500/20",
-      iconBg: "bg-orange-500/20",
-      badgeBg: "bg-orange-500/20"
+      gradient: "from-[#34A853]/20 to-[#34A853]/10",
+      iconBg: "bg-[#34A853]/20",
+      badgeBg: "bg-[#34A853]/20",
+      iconColor: "text-[#34A853]",
+      badgeColor: "text-[#34A853]"
     },
     {
       category: "Tools & Processes",
       icon: Wrench,
       skills: ["Git", "Jira", "Slack", "Agile", "Scrum", "Code Reviews", "Unit Testing", "Integration Testing"],
-      gradient: "from-indigo-500/20 to-blue-500/20",
-      iconBg: "bg-indigo-500/20",
-      badgeBg: "bg-indigo-500/20"
+      gradient: "from-[#4285F4]/20 to-[#4285F4]/10",
+      iconBg: "bg-[#4285F4]/20",
+      badgeBg: "bg-[#4285F4]/20",
+      iconColor: "text-[#4285F4]",
+      badgeColor: "text-[#4285F4]"
     }
   ];
 
@@ -111,10 +121,25 @@ const Skills = () => {
             return (
               <motion.div 
                 key={categoryIndex}
-                className="glass p-6 rounded-2xl hover:glass-strong transition-all duration-300 ease-out group relative overflow-hidden border-2 border-transparent hover:border-primary/30"
+                className="glass p-6 rounded-2xl hover:glass-strong transition-all duration-300 ease-out group relative overflow-hidden border-2 border-transparent"
                 variants={itemVariants}
                 whileHover={{ y: -3 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20, mass: 0.8 }}
+                onMouseEnter={(e) => {
+                  const color = category.iconColor.replace('text-[#', '#').replace(']', '');
+                  e.currentTarget.style.borderColor = color + '4D';
+                  const h3 = e.currentTarget.querySelector('h3');
+                  if (h3) {
+                    h3.style.color = color;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'transparent';
+                  const h3 = e.currentTarget.querySelector('h3');
+                  if (h3) {
+                    h3.style.color = '';
+                  }
+                }}
               >
                 {/* Animated gradient background */}
                 <motion.div 
@@ -132,9 +157,9 @@ const Skills = () => {
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                      <IconComponent className="h-6 w-6 text-primary" />
+                      <IconComponent className={`h-6 w-6 ${category.iconColor}`} />
                     </motion.div>
-                    <h3 className="text-lg md:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    <h3 className="text-lg md:text-xl font-bold text-foreground transition-colors">
                       {category.category}
                     </h3>
                   </div>
@@ -144,7 +169,18 @@ const Skills = () => {
                     {category.skills.map((skill, skillIndex) => (
                       <motion.span
                         key={skillIndex}
-                        className={`px-3 py-1.5 ${category.badgeBg} text-primary rounded-lg text-xs font-semibold backdrop-blur-sm cursor-default border border-primary/20 hover:border-primary/40 transition-all duration-200`}
+                        className={`px-3 py-1.5 ${category.badgeBg} ${category.badgeColor} rounded-lg text-xs font-semibold backdrop-blur-sm cursor-default border transition-all duration-200`}
+                        style={{
+                          borderColor: category.iconColor.replace('text-[#', '#').replace(']', '') + '33',
+                        } as React.CSSProperties}
+                        onMouseEnter={(e) => {
+                          const color = category.iconColor.replace('text-[#', '#').replace(']', '');
+                          e.currentTarget.style.borderColor = color + '66';
+                        }}
+                        onMouseLeave={(e) => {
+                          const color = category.iconColor.replace('text-[#', '#').replace(']', '');
+                          e.currentTarget.style.borderColor = color + '33';
+                        }}
                         initial={{ opacity: 0, y: 8 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
                         transition={{ 
