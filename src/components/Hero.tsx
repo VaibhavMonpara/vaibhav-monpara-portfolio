@@ -1,12 +1,8 @@
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import profileImage from "@/assets/profile.jpg";
 
 const Hero = () => {
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
   const scale = useTransform(scrollY, [0, 500], [1, 0.8]);
@@ -174,21 +170,6 @@ const Hero = () => {
             <Mail className="h-6 w-6" />
           </motion.a>
         </motion.div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div 
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer z-20"
-        onClick={() => scrollToSection("about")}
-        animate={{ y: [0, 10, 0] }}
-        transition={{ 
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        whileHover={{ scale: 1.2 }}
-      >
-        <ArrowDown className="h-7 w-7 text-muted-foreground" />
       </motion.div>
     </section>
   );

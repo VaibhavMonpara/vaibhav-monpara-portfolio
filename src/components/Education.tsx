@@ -62,14 +62,13 @@ const Education = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 60, scale: 0.95 },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.7,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
@@ -81,12 +80,12 @@ const Education = () => {
         style={{ opacity, scale, y }}
       >
         <motion.div 
-          className="text-center mb-24"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 tracking-tight">
             <span className="gradient-text">Education</span>
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground font-light">
@@ -106,10 +105,10 @@ const Education = () => {
               
               return (
                 <motion.div
-                  className="glass p-6 rounded-2xl hover:glass-strong transition-smooth group relative overflow-hidden"
+                  className="glass p-6 rounded-2xl hover:glass-strong transition-all duration-300 ease-out group relative overflow-hidden"
                   variants={itemVariants}
-                  whileHover={{ y: -4 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  whileHover={{ y: -3 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20, mass: 0.8 }}
                 >
                   <div 
                     className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -149,10 +148,14 @@ const Education = () => {
                           <motion.span
                             key={courseIndex}
                             className="px-2.5 py-1 bg-primary/15 text-primary rounded-lg text-xs font-medium backdrop-blur-sm cursor-default"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                            transition={{ delay: 0.4 + index * 0.2 + courseIndex * 0.03 }}
-                            whileHover={{ scale: 1.1 }}
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+                            transition={{ 
+                              delay: 0.3 + index * 0.1 + courseIndex * 0.02,
+                              duration: 0.3,
+                              ease: "easeOut"
+                            }}
+                            whileHover={{ scale: 1.08, y: -1 }}
                           >
                             {course}
                           </motion.span>

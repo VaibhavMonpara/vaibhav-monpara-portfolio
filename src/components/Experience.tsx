@@ -46,13 +46,13 @@ const Experience = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -50 },
+    hidden: { opacity: 0, x: -30 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.7,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
@@ -64,12 +64,12 @@ const Experience = () => {
         style={{ opacity, y }}
       >
         <motion.div 
-          className="text-center mb-24"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 tracking-tight">
             Work <span className="gradient-text">Experience</span>
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground font-light">
@@ -92,10 +92,10 @@ const Experience = () => {
               
               return (
                 <motion.div
-                  className="glass p-6 rounded-2xl hover:glass-strong transition-smooth group relative md:pl-20"
+                  className="glass p-6 rounded-2xl hover:glass-strong transition-all duration-300 ease-out group relative md:pl-20"
                   variants={itemVariants}
-                  whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  whileHover={{ x: 3 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20, mass: 0.8 }}
                 >
                   {/* Timeline dot */}
                   <div className="absolute left-6 top-8 w-3 h-3 bg-primary rounded-full border-2 border-background shadow-lg hidden md:block" />

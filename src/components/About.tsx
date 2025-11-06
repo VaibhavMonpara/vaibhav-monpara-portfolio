@@ -67,12 +67,12 @@ const About = () => {
         style={{ opacity, scale, y }}
       >
         <motion.div 
-          className="text-center mb-24"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 tracking-tight">
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-light">
@@ -90,10 +90,10 @@ const About = () => {
           {highlights.map((item, index) => (
             <motion.div
               key={index}
-              className="glass p-6 rounded-2xl hover:glass-strong transition-smooth group relative overflow-hidden"
+              className="glass p-6 rounded-2xl hover:glass-strong transition-all duration-300 ease-out group relative overflow-hidden"
               variants={itemVariants}
               whileHover={{ y: -4 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20, mass: 0.8 }}
             >
               <motion.div 
                 className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"

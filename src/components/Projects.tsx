@@ -81,14 +81,13 @@ const Projects = () => {
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 80, scale: 0.9 },
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.7,
-        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
       },
     },
   };
@@ -97,12 +96,12 @@ const Projects = () => {
     <section id="projects" ref={sectionRef} className="py-32 px-4 relative">
       <motion.div className="max-w-7xl mx-auto" style={{ opacity, scale, y }}>
         <motion.div
-          className="text-center mb-24"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 tracking-tight">
             Featured <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground font-light">
@@ -121,8 +120,13 @@ const Projects = () => {
               key={index}
               className="glass rounded-3xl overflow-hidden flex flex-col h-[500px] group relative"
               variants={cardVariants}
-              whileHover={{ y: -8 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              whileHover={{ y: -6 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+                mass: 0.8,
+              }}
             >
               {/* Image - Top Half with overlay */}
               <div className="h-2/5 bg-gradient-to-br from-primary/20 to-accent/20 overflow-hidden relative">
@@ -150,16 +154,18 @@ const Projects = () => {
                       <motion.span
                         key={techIndex}
                         className="px-2.5 py-1 bg-primary/15 text-primary rounded-full text-xs font-medium backdrop-blur-sm"
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, y: 10 }}
                         animate={
                           isInView
-                            ? { opacity: 1, scale: 1 }
-                            : { opacity: 0, scale: 0.8 }
+                            ? { opacity: 1, y: 0 }
+                            : { opacity: 0, y: 10 }
                         }
                         transition={{
-                          delay: 0.5 + index * 0.1 + techIndex * 0.05,
+                          delay: 0.3 + index * 0.05 + techIndex * 0.03,
+                          duration: 0.4,
+                          ease: "easeOut",
                         }}
-                        whileHover={{ scale: 1.1 }}
+                        whileHover={{ scale: 1.08, y: -1 }}
                       >
                         {tech}
                       </motion.span>
@@ -171,9 +177,10 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute bottom-4 right-4 p-2.5 glass hover:glass-strong rounded-lg transition-smooth group/link"
-                    whileHover={{ scale: 1.1 }}
+                    className="absolute bottom-4 right-4 p-2.5 glass hover:glass-strong rounded-lg transition-all duration-300 ease-out group/link"
+                    whileHover={{ scale: 1.08, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <Github className="h-4 w-4 group-hover/link:text-primary transition-colors" />
                   </motion.a>

@@ -52,13 +52,13 @@ const Contact = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.7,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 0.5,
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
@@ -70,12 +70,12 @@ const Contact = () => {
         style={{ opacity, scale, y }}
       >
         <motion.div 
-          className="text-center mb-24"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 tracking-tight">
             Let's <span className="gradient-text">Connect</span>
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground font-light">
@@ -95,14 +95,15 @@ const Contact = () => {
             variants={itemVariants}
           >
             <motion.div 
-              className="glass p-8 rounded-3xl hover:glass-strong transition-smooth group"
-              whileHover={{ y: -5, scale: 1.02 }}
+              className="glass p-8 rounded-3xl hover:glass-strong transition-all duration-300 ease-out group"
+              whileHover={{ y: -3 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20, mass: 0.8 }}
             >
               <div className="flex items-start gap-4">
                 <motion.div 
                   className="p-4 rounded-2xl bg-primary/15"
                   whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
                 >
                   <Mail className="h-7 w-7 text-primary" />
                 </motion.div>
@@ -134,7 +135,8 @@ const Contact = () => {
 
             <motion.div 
               className="glass-strong p-10 rounded-3xl"
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <p className="text-base text-foreground/90 leading-relaxed font-light">
                 Whether you have a question, a project idea, or just want to say hi, 
@@ -148,7 +150,7 @@ const Contact = () => {
             onSubmit={handleSubmit} 
             className="glass-strong p-10 rounded-3xl"
             variants={itemVariants}
-            whileHover={{ scale: 1.01 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
             <div className="space-y-6">
               <div>
@@ -198,14 +200,18 @@ const Contact = () => {
                 />
               </div>
 
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <motion.div 
+                whileHover={{ scale: 1.01 }} 
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
                 <Button 
                   type="submit" 
-                  className="w-full bg-primary hover:bg-primary/90 transition-smooth group text-base py-6"
+                  className="w-full bg-primary hover:bg-primary/90 transition-all duration-300 ease-out group text-base py-6"
                   size="lg"
                 >
                   Send Message
-                  <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </motion.div>
             </div>

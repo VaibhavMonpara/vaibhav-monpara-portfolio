@@ -69,14 +69,13 @@ const Skills = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 0.5,
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
@@ -88,12 +87,12 @@ const Skills = () => {
         style={{ opacity, scale, y }}
       >
         <motion.div 
-          className="text-center mb-24"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 tracking-tight">
             Skills & <span className="gradient-text">Expertise</span>
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground font-light">
@@ -112,10 +111,10 @@ const Skills = () => {
             return (
               <motion.div 
                 key={categoryIndex}
-                className="glass p-6 rounded-2xl hover:glass-strong transition-smooth group relative overflow-hidden border-2 border-transparent hover:border-primary/30"
+                className="glass p-6 rounded-2xl hover:glass-strong transition-all duration-300 ease-out group relative overflow-hidden border-2 border-transparent hover:border-primary/30"
                 variants={itemVariants}
-                whileHover={{ y: -6, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                whileHover={{ y: -3 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20, mass: 0.8 }}
               >
                 {/* Animated gradient background */}
                 <motion.div 
@@ -131,7 +130,7 @@ const Skills = () => {
                     <motion.div 
                       className={`p-3 rounded-xl ${category.iconBg} group-hover:scale-110 transition-transform duration-300`}
                       whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
                       <IconComponent className="h-6 w-6 text-primary" />
                     </motion.div>
@@ -145,15 +144,15 @@ const Skills = () => {
                     {category.skills.map((skill, skillIndex) => (
                       <motion.span
                         key={skillIndex}
-                        className={`px-3 py-1.5 ${category.badgeBg} text-primary rounded-lg text-xs font-semibold backdrop-blur-sm cursor-default border border-primary/20 hover:border-primary/40 transition-all`}
-                        initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                        animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 10 }}
+                        className={`px-3 py-1.5 ${category.badgeBg} text-primary rounded-lg text-xs font-semibold backdrop-blur-sm cursor-default border border-primary/20 hover:border-primary/40 transition-all duration-200`}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
                         transition={{ 
-                          delay: 0.3 + categoryIndex * 0.1 + skillIndex * 0.03,
-                          type: "spring",
-                          stiffness: 300
+                          delay: 0.2 + categoryIndex * 0.05 + skillIndex * 0.02,
+                          duration: 0.3,
+                          ease: "easeOut"
                         }}
-                        whileHover={{ scale: 1.15, y: -2 }}
+                        whileHover={{ scale: 1.08, y: -1 }}
                       >
                         {skill}
                       </motion.span>
