@@ -4,9 +4,10 @@ import profileImage from "@/assets/profile.jpg";
 
 const Hero = () => {
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
-  const scale = useTransform(scrollY, [0, 500], [1, 0.8]);
-  const y = useTransform(scrollY, [0, 500], [0, 100]);
+  // Only apply transforms when scrolled past 100px to ensure perfect centering on initial load
+  const opacity = useTransform(scrollY, [0, 100, 500], [1, 1, 0]);
+  const scale = useTransform(scrollY, [0, 100, 500], [1, 1, 0.8]);
+  const y = useTransform(scrollY, [0, 100, 500], [0, 0, 100]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -32,7 +33,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-20">
+    <section className="h-screen flex items-center justify-center relative overflow-hidden px-4 py-8">
       {/* Animated background elements with parallax */}
       <motion.div 
         className="absolute inset-0 overflow-hidden pointer-events-none"
@@ -66,7 +67,7 @@ const Hero = () => {
       </motion.div>
 
       <motion.div 
-        className="max-w-6xl mx-auto text-center relative z-10"
+        className="max-w-6xl mx-auto text-center relative z-10 w-full flex flex-col items-center justify-center"
         style={{ opacity, scale, y }}
         variants={containerVariants}
         initial="hidden"
@@ -74,7 +75,7 @@ const Hero = () => {
       >
         {/* Profile Image */}
         <motion.div 
-          className="mb-12 flex justify-center"
+          className="mb-8 flex justify-center"
           variants={itemVariants}
         >
           <div className="relative">
@@ -101,7 +102,7 @@ const Hero = () => {
         </motion.div>
         
         <motion.div 
-          className="mb-8"
+          className="mb-6"
           variants={itemVariants}
         >
           <motion.span 
@@ -113,7 +114,7 @@ const Hero = () => {
         </motion.div>
         
         <motion.h1 
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-[1.1] tracking-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 leading-[1.1] tracking-tight"
           variants={itemVariants}
         >
           Hi, I'm{" "}
@@ -121,14 +122,14 @@ const Hero = () => {
         </motion.h1>
         
         <motion.p 
-          className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-6 font-light tracking-wide"
+          className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-4 font-light tracking-wide"
           variants={itemVariants}
         >
           Software Engineer
         </motion.p>
         
         <motion.p 
-          className="text-lg md:text-xl text-muted-foreground/70 max-w-3xl mx-auto mb-16 leading-relaxed font-light"
+          className="text-lg md:text-xl text-muted-foreground/70 max-w-3xl mx-auto mb-8 leading-relaxed font-light"
           variants={itemVariants}
         >
           Building digital experiences that blend logic with design
