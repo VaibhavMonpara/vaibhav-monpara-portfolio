@@ -23,16 +23,14 @@ const Experience = () => {
       company: "AirKitchenz",
       location: "Los Angeles, CA - Hybrid",
       logo: "/logos/companies/airkitchenz.png",
-      description: "Engineered distributed systems with Python and Node.js, enabling 99% uptime and scalable request handling. Built CI/CD pipelines with GitHub Actions, cutting deployment cycles by 30%. Spearheaded infrastructure migration to cloud-native AWS architecture (EC2, S3, Lambda, RDS), reducing costs by 20% and enhancing fault tolerance.",
       achievements: [
-        "Engineered distributed systems with Python and Node.js, enabling 99% uptime and scalable request handling",
-        "Built CI/CD pipelines with GitHub Actions, cutting deployment cycles by 30% and ensuring reliable releases",
-        "Spearheaded infrastructure migration to cloud-native AWS architecture (EC2, S3, Lambda, RDS), reducing costs by 20% and enhancing fault tolerance",
-        "Led cross-functional Agile teams through sprints, retrospectives, and backlog grooming, improving velocity by 25%",
-        "Delivered responsive, accessible React.js frontends, improving conversion and user adoption by 15%",
-        "Mentored peers and enforced clean code practices through structured code reviews, decreasing post-deployment issues by 40%",
-        "Implemented unit/integration testing frameworks, resulting in 25% fewer regressions across new feature deployments",
-        "Led full-lifecycle projects within Agile Scrum, driving on-time delivery rates up by 20% and improving client satisfaction by 15%"
+        "Designed and implemented high-availability backend systems using Python, Node.js, Express.js, and PostgreSQL, achieving 99.9% uptime while scaling to handle 50K+ daily requests during peak periods",
+        "Built and owned end-to-end CI/CD pipelines with GitHub Actions, Docker, and AWS ECS, reducing deployment time from 30 minutes to under 4 minutes and enabling 15+ production releases per week",
+        "Led migration of monolithic infrastructure to cloud-native AWS services (EC2, Lambda, S3, DynamoDB), cutting monthly cloud costs by 28% and improving fault tolerance with multi availability zone deployments",
+        "Developed pixel-perfect, accessible frontends with React.js, TypeScript, Redux, Tailwind CSS, and WebSocket APIs, boosting user conversion rates by 22%",
+        "Drove Agile/Scrum meetings (sprint planning, retrospectives, backlog refinement) for a 10 member cross-functional team using Slack, increasing team velocity by 38% and consistently delivering features ahead of schedule",
+        "Established rigorous code review and testing standards (Jest, React Testing Library, PyTest), raising unit/integration test coverage to 88% and reducing production defects by 65%"
+        
       ]
     },
     {
@@ -41,14 +39,13 @@ const Experience = () => {
       company: "Midocean Technologies",
       location: "Ahmedabad, IND - On-site",
       logo: "/logos/companies/midocean.png",
-      description: "Developed modular full-stack solutions in Python (Django), C#, .NET Core, and Java, improving system scalability and maintainability. Designed and deployed RESTful APIs and process automation tools, reducing manual workloads by 30%. Managed end-to-end DevOps delivery using Azure, integrating CI/CD for faster and more reliable deployments.",
       achievements: [
-        "Developed modular full-stack solutions in Python, Django, Javascript, PostgreSQL improving system scalability and maintainability across multiple client projects",
-        "Managed end-to-end DevOps delivery using Azure, integrating CI/CD for faster and more reliable deployments",
-        "Designed and deployed RESTful APIs and process automation tools, reducing manual workloads by 30%",
-        "Architected analytics dashboards and tracking systems to centralize insights and increase data accuracy by 35%",
-        "Built a logistics management system using Java and Spring Boot, enabling real-time shipment tracking and improving operational visibility across delivery networks"
-      ]
+        "Architected and delivered modular full-stack enterprise applications using Python/Django, Java Spring Boot, React + TypeScript, and PostgreSQL, supporting 100K+ monthly transactions with 99.95% availability",
+        "Owned DevOps transformation on Azure (Azure Kubernetes Service, Azure DevOps Pipelines, Docker), implementing GitOps workflows that slashed average deployment time from 45 minutes to 7 minutes",
+        "Designed and deployed high-performance RESTful APIs and GraphQL services with Node.js, Express and Django REST Framework, automating manual processes that saved clients 5,000 labor hours annually",
+        "Built real-time logistics tracking platform with Java Spring Boot, Redis, WebSockets, and PostgreSQL, enabling live shipment visibility across 15+ countries and reducing delivery delays by 42%",
+        "Created executive analytics dashboards using React, Recharts, and Django backend that consolidated fragmented data sources, improving reporting accuracy from 68% to 99.6%"
+        ]
     }
   ];
 
