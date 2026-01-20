@@ -33,7 +33,7 @@ const Experience = () => {
     },
     {
       year: "Jan 2024 - Jul 2024",
-      role: "Software Engineer",
+      role: "AI Backend Engineer",
       company: "Intuit",
       location: "Los Angeles, CA",
       logo: "/logos/companies/intuit.png",
@@ -61,7 +61,7 @@ const Experience = () => {
     },
     {
       year: "Nov 2018 - Sep 2020",
-      role: "Software Engineer",
+      role: "Full-stack Developer",
       company: "Infinite Infolab",
       location: "Ahmedabad, IND - On-site",
       logo: "/logos/companies/infiniteinfolab.png",
