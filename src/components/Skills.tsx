@@ -1,6 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Code, Database, Cloud, Wrench, Layers } from "lucide-react";
+import { Code, Database, Cloud, Wrench, Layers, Brain } from "lucide-react";
 
 const Skills = () => {
   const sectionRef = useRef(null);
@@ -19,7 +19,20 @@ const Skills = () => {
     {
       category: "Backend",
       icon: Code,
-      skills: ["Python", "Java", "Node.js", "Express.js", ".NET C#", ".NET Core", "RESTful APIs", "GraphQL", "SOAP APIs"],
+      skills: [
+        "Python",
+        "Node.js",
+        "Express.js",
+        "Django",
+        "Flask",
+        "FastAPI",
+        "REST APIs",
+        "GraphQL",
+        "gRPC",
+        "Microservices",
+        "Serverless Architecture",
+        "Asynchronous Processing"
+      ],
       gradient: "from-[#4285F4]/20 to-[#4285F4]/10",
       iconBg: "bg-[#4285F4]/20",
       badgeBg: "bg-[#4285F4]/20",
@@ -29,7 +42,18 @@ const Skills = () => {
     {
       category: "Frontend",
       icon: Layers,
-      skills: ["React.js", "Redux", "JavaScript", "TypeScript", "Tailwind CSS", "React Native", "Flutter"],
+      skills: [
+        "React",
+        "JavaScript",
+        "TypeScript",
+        "Redux",
+        "Material UI",
+        "HTML",
+        "CSS",
+        "Next.js",
+        "Webpack",
+        "Jest"
+      ],
       gradient: "from-[#EA4335]/20 to-[#EA4335]/10",
       iconBg: "bg-[#EA4335]/20",
       badgeBg: "bg-[#EA4335]/20",
@@ -39,7 +63,18 @@ const Skills = () => {
     {
       category: "Databases",
       icon: Database,
-      skills: ["PostgreSQL", "DynamoDB", "MongoDB", "SQL", "NoSQL"],
+      skills: [
+        "PostgreSQL",
+        "DynamoDB",
+        "MongoDB",
+        "MySQL",
+        "Redis",
+        "NoSQL",
+        "Data Modeling",
+        "Query Optimization",
+        "Database Indexing",
+        "ETL"
+      ],
       gradient: "from-[#FBBC05]/20 to-[#FBBC05]/10",
       iconBg: "bg-[#FBBC05]/20",
       badgeBg: "bg-[#FBBC05]/20",
@@ -49,7 +84,16 @@ const Skills = () => {
     {
       category: "Cloud & DevOps",
       icon: Cloud,
-      skills: ["AWS (EC2, S3, Lambda, RDS)", "Docker", "Kubernetes", "GitHub Actions", "CI/CD", "Azure"],
+      skills: [
+        "AWS (Lambda, ECS, API Gateway, SQS, IAM, CloudWatch)",
+        "Docker",
+        "Containerization",
+        "CI/CD Pipelines",
+        "GitHub Actions",
+        "Serverless Deployments",
+        "Load Balancing",
+        "Auto Scaling"
+      ],
       gradient: "from-[#34A853]/20 to-[#34A853]/10",
       iconBg: "bg-[#34A853]/20",
       badgeBg: "bg-[#34A853]/20",
@@ -57,9 +101,41 @@ const Skills = () => {
       badgeColor: "text-[#34A853]"
     },
     {
-      category: "Tools & Processes",
+      category: "AI / GenAI",
+      icon: Brain,
+      skills: [
+        "LLM APIs",
+        "Retrieval-Augmented Generation (RAG)",
+        "Text Embeddings",
+        "Ranking Algorithms",
+        "NLP Pipelines",
+        "AI-Assisted Decision Systems",
+        "Model Deployment",
+        "A/B Testing",
+        "PyTorch",
+        "Machine Learning"
+      ],
+      gradient: "from-[#9333EA]/20 to-[#9333EA]/10",
+      iconBg: "bg-[#9333EA]/20",
+      badgeBg: "bg-[#9333EA]/20",
+      iconColor: "text-[#9333EA]",
+      badgeColor: "text-[#9333EA]"
+    },
+    {
+      category: "Testing & Processes",
       icon: Wrench,
-      skills: ["Git", "Jira", "Slack", "Agile", "Scrum", "Code Reviews", "Unit Testing", "Integration Testing"],
+      skills: [
+        "Unit Testing",
+        "Integration Testing",
+        "API Testing",
+        "End-to-End Testing",
+        "Git",
+        "CI/CD Automation",
+        "Release Validation",
+        "Agile",
+        "Scrum",
+        "Jira"
+      ],
       gradient: "from-[#4285F4]/20 to-[#4285F4]/10",
       iconBg: "bg-[#4285F4]/20",
       badgeBg: "bg-[#4285F4]/20",
@@ -67,6 +143,7 @@ const Skills = () => {
       badgeColor: "text-[#4285F4]"
     }
   ];
+  
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -85,7 +162,7 @@ const Skills = () => {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
       },
     },
   };

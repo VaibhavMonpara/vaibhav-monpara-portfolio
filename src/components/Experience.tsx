@@ -24,13 +24,25 @@ const Experience = () => {
       location: "Los Angeles, CA - Hybrid",
       logo: "/logos/companies/airkitchenz.png",
       achievements: [
-        "Designed and implemented high-availability backend systems using Python, Node.js, Express.js, and PostgreSQL, achieving 99.9% uptime while scaling to handle 50K+ daily requests during peak periods",
-        "Built and owned end-to-end CI/CD pipelines with GitHub Actions, Docker, and AWS ECS, reducing deployment time from 30 minutes to under 4 minutes and enabling 15+ production releases per week",
-        "Led migration of monolithic infrastructure to cloud-native AWS services (EC2, Lambda, S3, DynamoDB), cutting monthly cloud costs by 28% and improving fault tolerance with multi availability zone deployments",
-        "Developed pixel-perfect, accessible frontends with React.js, TypeScript, Redux, Tailwind CSS, and WebSocket APIs, boosting user conversion rates by 22%",
-        "Drove Agile/Scrum meetings (sprint planning, retrospectives, backlog refinement) for a 10 member cross-functional team using Slack, increasing team velocity by 38% and consistently delivering features ahead of schedule",
-        "Established rigorous code review and testing standards (Jest, React Testing Library, PyTest), raising unit/integration test coverage to 88% and reducing production defects by 65%"
-        
+        "Built the customer-facing kitchen discovery and booking platform from scratch using React and Material UI with a Node.js (Express) backend, enabling end-to-end flows for live food sellers",
+        "Designed and implemented backend APIs using Node.js and Python with DynamoDB to manage kitchen availability, pricing rules, and booking state, keeping core API response times under 300 ms",
+        "Set up automated CI/CD pipelines using GitHub Actions and AWS, reducing manual release effort and cutting average deployment time from 30 minutes to under 10 minutes",
+        "Implemented an AI-driven kitchen matching workflow using Python and LLM APIs, ranking kitchens by location, availability, and seller requirements, reducing manual shortlisting effort by 40%",
+        "Architected an early RAG prototype using Python, embeddings, and vector search to answer seller questions about kitchen rules and onboarding, reducing onboarding support follow-ups by 25%"
+      ]
+    },
+    {
+      year: "Jan 2024 - Jul 2024",
+      role: "Software Engineer",
+      company: "Intuit",
+      location: "Los Angeles, CA",
+      logo: "/logos/companies/intuit.png",
+      achievements: [
+        "Designed Python-based backend services to ingest, normalize, and validate large-scale tax and financial documents, processing millions of records per filing season",
+        "Implemented LLM-powered classification and data extraction pipelines using Python, AWS Lambda, and SQS, reducing manual review workload for tax operations teams by 32% during peak periods",
+        "Built an internal RAG service using Python, embeddings, and vector search on AWS-managed storage, cutting analyst tax policy lookup time from minutes to seconds",
+        "Integrated AI services with core Intuit platforms via REST APIs deployed on AWS API Gateway and ECS, enforcing IAM-based access control, audit logging, and stable latency during seasonal traffic spikes",
+        "Added production monitoring, confidence checks, and safety fallbacks using CloudWatch and Python-based validation logic, reducing incorrect AI-assisted suggestions by 18%"
       ]
     },
     {
@@ -40,14 +52,29 @@ const Experience = () => {
       location: "Ahmedabad, IND - On-site",
       logo: "/logos/companies/midocean.png",
       achievements: [
-        "Architected and delivered modular full-stack enterprise applications using Python/Django, Java Spring Boot, React + TypeScript, and PostgreSQL, supporting 100K+ monthly transactions with 99.95% availability",
-        "Owned DevOps transformation on Azure (Azure Kubernetes Service, Azure DevOps Pipelines, Docker), implementing GitOps workflows that slashed average deployment time from 45 minutes to 7 minutes",
-        "Designed and deployed high-performance RESTful APIs and GraphQL services with Node.js, Express and Django REST Framework, automating manual processes that saved clients 5,000 labor hours annually",
-        "Built real-time logistics tracking platform with Java Spring Boot, Redis, WebSockets, and PostgreSQL, enabling live shipment visibility across 15+ countries and reducing delivery delays by 42%",
-        "Created executive analytics dashboards using React, Recharts, and Django backend that consolidated fragmented data sources, improving reporting accuracy from 68% to 99.6%"
-        ]
+        "Delivered modular enterprise applications using Python (Django), React with TypeScript, and PostgreSQL, supporting 100K+ monthly transactions with 99.95% uptime",
+        "Reworked CI/CD and environment workflows using Git-based pipelines and AWS, reducing average deployment time from 45 minutes to 7 minutes and minimizing rollback incidents",
+        "Developed REST and GraphQL APIs using Django REST Framework and Node.js (Express), replacing manual business workflows and saving over 5,000 client labor hours annually",
+        "Implemented a real-time logistics and shipment tracking system using Python, Flask, WebSockets, and PostgreSQL, enabling live visibility across 15+ countries and reducing delivery delays by 42%",
+        "Built executive reporting dashboards with React and Recharts backed by Django APIs, consolidating fragmented data sources and improving reporting accuracy from 68% to 99.6%"
+      ]
+    },
+    {
+      year: "Nov 2018 - Sep 2020",
+      role: "Software Engineer",
+      company: "Infinite Infolab",
+      location: "Ahmedabad, IND - On-site",
+      logo: "/logos/companies/infiniteinfolab.png",
+      achievements: [
+        "Developed complex user-facing dashboards using React and JavaScript, implementing multi-step forms, role-based views, and client-side state management that reduced task completion time by 35%",
+        "Built backend services using Node.js and Express to handle authentication, authorization, and transactional workflows, supporting 1,000+ concurrent active users without session conflicts",
+        "Designed and optimized relational data models in PostgreSQL, improving query performance through indexing and join optimization and reducing slow API responses by 40%",
+        "Integrated third-party services including payment gateways, email notifications, and file uploads using Node.js, cutting manual operational effort for internal teams by over 50%",
+        "Collaborated closely with product and QA teams to ship weekly releases through Git-based workflows, steadily reducing post-release defects over time"
+      ]
     }
   ];
+  
 
   const containerVariants = {
     hidden: { opacity: 0 },
