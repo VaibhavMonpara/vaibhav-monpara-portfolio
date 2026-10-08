@@ -1,73 +1,38 @@
-# Welcome to your Lovable project
+# vaibhav-monpara-portfolio
 
-## Project info
+Personal site of Vaibhav Monpara, full stack engineer in New York.
 
-**URL**: https://lovable.dev/projects/cca98b0d-8676-4260-8abc-3ef6ceae1208
+Built with React, TypeScript, Vite and Tailwind CSS. No backend: the contact form opens the visitor's own email app with their message filled in.
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/cca98b0d-8676-4260-8abc-3ef6ceae1208) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Run locally
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm install
+npm run dev        # dev server with hot reload
+npm run build      # production build into dist/
+npm run preview    # serve the production build
 ```
 
-**Edit a file directly in GitHub**
+## Updating content
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+All copy lives in [`src/data/profile.ts`](src/data/profile.ts): intro, about, roles, projects, skills and education. Components render from that file, so adding a new job or project means editing data only.
 
-**Use GitHub Codespaces**
+- Roles use `"YYYY-MM"` dates; set `end: null` for the current role. Durations and the career timeline in the hero are computed from these dates.
+- Company and school logos go in `public/logos/`.
+- Projects with `featured: true` appear in the top row; the rest appear in the list below.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Structure
 
-## What technologies are used for this project?
+```
+src/
+  data/profile.ts           content
+  lib/dates.ts              date formatting and durations
+  components/
+    SiteHeader.tsx          sticky header and section links
+    Hero.tsx                name, intro and links
+    CareerTimeline.tsx      proportional work/study timeline
+    Section.tsx             shared two-column section layout
+    About, Experience, Projects, Skills, Education, Contact, Footer
+```
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/cca98b0d-8676-4260-8abc-3ef6ceae1208) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+The design uses one typeface (Schibsted Grotesk, self-hosted) and a small palette defined as CSS variables in `src/index.css`.

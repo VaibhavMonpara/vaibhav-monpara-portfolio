@@ -1,41 +1,30 @@
-import { Heart } from "lucide-react";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { profile } from "@/data/profile";
 
-const Footer = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-  return (
-    <footer ref={ref} className="py-16 px-4 border-t border-border/50 relative">
-      <div className="max-w-6xl mx-auto text-center">
-        <motion.p 
-          className="text-muted-foreground flex items-center justify-center gap-2 text-lg"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-        >
-          Built with{" "}
-          <motion.span
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
-          >
-            <Heart className="h-5 w-5 text-primary fill-primary" />
-          </motion.span>{" "}
-          by Vaibhav Monpara
-        </motion.p>
-        <motion.p 
-          className="text-sm text-muted-foreground/70 mt-4 font-light"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          © {new Date().getFullYear()} All rights reserved
-        </motion.p>
-      </div>
-    </footer>
-  );
-};
+const Footer = () => (
+  <footer className="border-t border-rule">
+    <div className="container flex flex-col gap-3 py-8 text-sm text-graphite sm:flex-row sm:items-center sm:justify-between">
+      <p>
+        © {new Date().getFullYear()} {profile.name}
+      </p>
+      <ul className="flex gap-5">
+        <li>
+          <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-ink">
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href={profile.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-ink">
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href={`mailto:${profile.email}`} className="hover:text-ink">
+            Email
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+);
 
 export default Footer;
