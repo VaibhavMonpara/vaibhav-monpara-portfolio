@@ -18,7 +18,21 @@ const Experience = () => {
 
   const experiences = [
     {
-      year: "Aug 2024 - Present",
+      year: "Apr 2026 - Present",
+      role: "Full Stack Engineer",
+      company: "EXL",
+      location: "New York, NY - Hybrid",
+      logo: "/logos/companies/exl.png",
+      achievements: [
+        "Own CI/CD pipelines for 3 services (Next.js frontend, Flask backend, Celery task worker) deploying into GKE environments, with automated build quality checks and test suites, shipping 1 release per week",
+        "Validate JFrog artifacts and run GitOps deployments through ArgoCD, so only approved, tested builds reach production",
+        "Implemented dynamic Docker image tagging based on environment and branch, eliminating manual tagging errors across releases",
+        "Load and validate historical data from 3 active source channels into production, verifying completeness and accuracy after injection",
+        "Test and validate every release across development and production environments, owning pre-release sign-off; caught and fixed a bad-URL bug before it reached production"
+      ]
+    },
+    {
+      year: "Aug 2024 - Apr 2026",
       role: "Software Engineer",
       company: "AirKitchenz",
       location: "Los Angeles, CA - Hybrid",
