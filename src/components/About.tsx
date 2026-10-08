@@ -187,16 +187,15 @@ const About = () => {
                   <p className="text-lg md:text-xl leading-relaxed text-foreground/95 mb-6 font-light">
                     I'm a{" "}
                     <span className="font-semibold text-primary">
-                      Software Engineer
+                      Full Stack Engineer
                     </span>{" "}
                     currently working at{" "}
-                    <span className="font-semibold">AirKitchenz</span> in Los
-                    Angeles, where I engineer distributed systems with Python
-                    and Node.js, achieving{" "}
+                    <span className="font-semibold">EXL</span> in New York,
+                    where I own CI/CD and GitOps deployments for{" "}
                     <span className="font-semibold text-primary">
-                      99% uptime
+                      Next.js, Flask and Celery
                     </span>{" "}
-                    and scalable request handling.
+                    services running on GKE.
                   </p>
                   <p className="text-lg md:text-xl leading-relaxed text-foreground/95 font-light">
                     I specialize in building cloud-native architectures using
